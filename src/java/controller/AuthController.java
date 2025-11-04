@@ -26,9 +26,11 @@ public class AuthController extends HttpServlet {
         
         try {
             if ("auth_login".equals(action)) {
-                url = handleLogin(request, response);
+                handleLogin(request, response);
+                return; // handleLogin now uses redirect
             } else if ("auth_logout".equals(action)) {
-                url = handleLogout(request, response);
+                handleLogout(request, response);
+                return; // handleLogout now uses redirect
             } else if ("auth_showLogin".equals(action)) {
                 url = LOGIN_PAGE;
             } else {
@@ -44,7 +46,8 @@ public class AuthController extends HttpServlet {
         request.getRequestDispatcher(url).forward(request, response);
     }
     
-    private String handleLogin(HttpServletRequest request, HttpServletResponse response) {
+    private void handleLogin(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
@@ -57,7 +60,8 @@ public class AuthController extends HttpServlet {
             // Check if already logged in elsewhere
             if (!dao.registerSession(username, session.getId())) {
                 request.setAttribute("ERROR", "This account is already logged in on another browser/device!");
-                return LOGIN_PAGE;
+                request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
+                return;
             }
             
             // Store user info in session
@@ -67,21 +71,24 @@ public class AuthController extends HttpServlet {
             session.setAttribute("role", account.getRoleInSystem());
             session.setAttribute("roleName", account.getRoleName());
             
-            request.setAttribute("SUCCESS", "Welcome, " + account.getFullName() + "!");
+            session.setAttribute("SUCCESS", "Welcome, " + account.getFullName() + "!");
             
             // Redirect based on role
+            String redirectUrl = request.getContextPath();
             if (account.getRoleInSystem() >= 1) { // Admin or Manager
-                return ADMIN_HOME;
+                redirectUrl += ADMIN_HOME;
             } else {
-                return HOME_PAGE;
+                redirectUrl += HOME_PAGE;
             }
+            response.sendRedirect(redirectUrl);
         } else {
             request.setAttribute("ERROR", "Invalid username or password, or account is banned!");
-            return LOGIN_PAGE;
+            request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
         }
     }
     
-    private String handleLogout(HttpServletRequest request, HttpServletResponse response) {
+    private void handleLogout(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         
         if (session != null) {
@@ -96,8 +103,12 @@ public class AuthController extends HttpServlet {
             session.invalidate();
         }
         
-        request.setAttribute("SUCCESS", "You have been logged out successfully!");
-        return HOME_PAGE;
+        // Create new session for success message
+        HttpSession newSession = request.getSession(true);
+        newSession.setAttribute("SUCCESS", "You have been logged out successfully!");
+        
+        // Redirect to home page
+        response.sendRedirect(request.getContextPath() + HOME_PAGE);
     }
 
     @Override

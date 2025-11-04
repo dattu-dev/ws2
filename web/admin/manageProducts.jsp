@@ -192,15 +192,15 @@
                 </div>
                 
                 <ul class="nav-menu">
-                    <li><a href="dashboard.jsp">Dashboard</a></li>
-                    <li><a href="../MainController?action=product_list">Products</a></li>
-                    <li><a href="../MainController?action=category_list">Categories</a></li>
-                    <li><a href="../MainController?action=account_list">Accounts</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/dashboard.jsp">Dashboard</a></li>
+                    <li><a href="${pageContext.request.contextPath}/MainController?action=product_list">Products</a></li>
+                    <li><a href="${pageContext.request.contextPath}/MainController?action=category_list">Categories</a></li>
+                    <li><a href="${pageContext.request.contextPath}/MainController?action=account_list">Accounts</a></li>
                 </ul>
                 
                 <div class="user-info">
                     <span>${sessionScope.fullName}</span>
-                    <a href="../MainController?action=auth_logout" class="btn btn-secondary">Logout</a>
+                    <a href="${pageContext.request.contextPath}/MainController?action=auth_logout" class="btn btn-secondary">Logout</a>
                 </div>
             </div>
         </div>
@@ -211,7 +211,7 @@
         <div class="container">
             <div class="page-header-content">
                 <h2 class="page-title">Manage Products</h2>
-                <a href="../MainController?action=product_showCreate" class="btn btn-primary">
+                <a href="${pageContext.request.contextPath}/MainController?action=product_showCreate" class="btn btn-primary">
                     + Add New Product
                 </a>
             </div>
@@ -272,12 +272,12 @@
                             <td><fmt:formatDate value="${product.postedDate}" pattern="dd/MM/yyyy"/></td>
                             <td>
                                 <div class="actions">
-                                    <a href="../MainController?action=product_view&productId=${product.productId}" 
+                                    <a href="${pageContext.request.contextPath}/MainController?action=product_view&productId=${product.productId}" 
                                        class="btn btn-primary btn-sm">View</a>
-                                    <a href="../MainController?action=product_showEdit&productId=${product.productId}" 
+                                    <a href="${pageContext.request.contextPath}/MainController?action=product_showEdit&productId=${product.productId}" 
                                        class="btn btn-warning btn-sm">Edit</a>
                                     <c:if test="${sessionScope.role >= 1}">
-                                        <a href="../MainController?action=product_delete&productId=${product.productId}" 
+                                        <a href="${pageContext.request.contextPath}/MainController?action=product_delete&productId=${product.productId}" 
                                            class="btn btn-danger btn-sm"
                                            onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
                                     </c:if>

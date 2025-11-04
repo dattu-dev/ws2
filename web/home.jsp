@@ -225,11 +225,11 @@
                 </div>
                 
                 <ul class="nav-menu">
-                    <li><a href="home.jsp">Home</a></li>
-                    <li><a href="MainController?action=product_list">Products</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home.jsp">Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/MainController?action=product_list">Products</a></li>
                     <c:if test="${not empty sessionScope.account}">
                         <c:if test="${sessionScope.role >= 1}">
-                            <li><a href="admin/dashboard.jsp">Admin</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/dashboard.jsp">Admin</a></li>
                         </c:if>
                     </c:if>
                 </ul>
@@ -238,10 +238,10 @@
                     <c:choose>
                         <c:when test="${not empty sessionScope.account}">
                             <span>Welcome, ${sessionScope.fullName} (${sessionScope.roleName})</span>
-                            <a href="MainController?action=auth_logout" class="btn btn-secondary">Logout</a>
+                            <a href="${pageContext.request.contextPath}/MainController?action=auth_logout" class="btn btn-secondary">Logout</a>
                         </c:when>
                         <c:otherwise>
-                            <a href="login.jsp" class="btn btn-primary">Login</a>
+                            <a href="${pageContext.request.contextPath}/login.jsp" class="btn btn-primary">Login</a>
                         </c:otherwise>
                     </c:choose>
                 </div>
@@ -266,7 +266,7 @@
             <h2>Discover Amazing Products</h2>
             <p>Browse our collection of quality products at great prices</p>
             
-            <form action="MainController" method="get" class="search-box">
+            <form action="${pageContext.request.contextPath}/MainController" method="get" class="search-box">
                 <input type="hidden" name="action" value="product_search">
                 <input type="text" name="keyword" placeholder="Search for products..." required>
                 <button type="submit">Search</button>
@@ -283,19 +283,19 @@
                 <div class="category-card">
                     <h3>All Products</h3>
                     <p>View our complete collection</p>
-                    <a href="MainController?action=product_list" class="btn btn-primary">View All</a>
+                    <a href="${pageContext.request.contextPath}/MainController?action=product_list" class="btn btn-primary">View All</a>
                 </div>
                 
                 <div class="category-card">
                     <h3>Special Offers</h3>
                     <p>Products with discounts</p>
-                    <a href="MainController?action=product_filter&hasDiscount=yes" class="btn btn-primary">View Deals</a>
+                    <a href="${pageContext.request.contextPath}/MainController?action=product_filter&hasDiscount=yes" class="btn btn-primary">View Deals</a>
                 </div>
                 
                 <div class="category-card">
                     <h3>Latest Products</h3>
                     <p>Check out our newest items</p>
-                    <a href="MainController?action=product_list&sortBy=date_desc" class="btn btn-primary">View New</a>
+                    <a href="${pageContext.request.contextPath}/MainController?action=product_list&sortBy=date_desc" class="btn btn-primary">View New</a>
                 </div>
             </div>
         </div>
