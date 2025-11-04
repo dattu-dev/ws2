@@ -209,7 +209,7 @@
         
         <!-- Account Form -->
         <div class="form-container">
-            <form action="../MainController" method="post">
+            <form action="${pageContext.request.contextPath}/MainController" method="post">
                 <input type="hidden" name="action" 
                        value="${not empty account ? 'account_update' : 'account_create'}">
                 
@@ -306,7 +306,7 @@
                 </div>
                 
                 <div class="form-actions">
-                    <a href="../MainController?action=account_list" class="btn btn-secondary">Cancel</a>
+                    <a href="${pageContext.request.contextPath}/MainController?action=account_list" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-primary">
                         <c:choose>
                             <c:when test="${not empty account}">Update Account</c:when>

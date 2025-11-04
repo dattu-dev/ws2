@@ -195,7 +195,7 @@
         
         <!-- Category Form -->
         <div class="form-container">
-            <form action="../MainController" method="post">
+            <form action="${pageContext.request.contextPath}/MainController" method="post">
                 <input type="hidden" name="action" 
                        value="${not empty category ? 'category_update' : 'category_create'}">
                 <c:if test="${not empty category}">
@@ -215,7 +215,7 @@
                 </div>
                 
                 <div class="form-actions">
-                    <a href="../MainController?action=category_list" class="btn btn-secondary">Cancel</a>
+                    <a href="${pageContext.request.contextPath}/MainController?action=category_list" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-primary">
                         <c:choose>
                             <c:when test="${not empty category}">Update Category</c:when>

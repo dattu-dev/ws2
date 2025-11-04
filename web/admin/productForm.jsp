@@ -239,7 +239,7 @@
         
         <!-- Product Form -->
         <div class="form-container">
-            <form action="../MainController" method="post" id="productForm">
+            <form action="${pageContext.request.contextPath}/MainController" method="post" id="productForm">
                 <input type="hidden" name="action" 
                        value="${not empty product ? 'product_update' : 'product_create'}">
                 
@@ -349,7 +349,7 @@
                 
                 <!-- Form Actions -->
                 <div class="form-actions">
-                    <a href="../MainController?action=product_list" class="btn btn-secondary">Cancel</a>
+                    <a href="${pageContext.request.contextPath}/MainController?action=product_list" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-primary">
                         <c:choose>
                             <c:when test="${not empty product}">Update Product</c:when>

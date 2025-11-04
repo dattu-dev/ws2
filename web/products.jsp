@@ -282,11 +282,11 @@
                 </div>
                 
                 <ul class="nav-menu">
-                    <li><a href="home.jsp">Home</a></li>
-                    <li><a href="MainController?action=product_list">Products</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home.jsp">Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/MainController?action=product_list">Products</a></li>
                     <c:if test="${not empty sessionScope.account}">
                         <c:if test="${sessionScope.role >= 1}">
-                            <li><a href="admin/dashboard.jsp">Admin</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/dashboard.jsp">Admin</a></li>
                         </c:if>
                     </c:if>
                 </ul>
@@ -295,10 +295,10 @@
                     <c:choose>
                         <c:when test="${not empty sessionScope.account}">
                             <span>Welcome, ${sessionScope.fullName}</span>
-                            <a href="MainController?action=auth_logout" class="btn btn-secondary">Logout</a>
+                            <a href="${pageContext.request.contextPath}/MainController?action=auth_logout" class="btn btn-secondary">Logout</a>
                         </c:when>
                         <c:otherwise>
-                            <a href="login.jsp" class="btn btn-primary">Login</a>
+                            <a href="${pageContext.request.contextPath}/login.jsp" class="btn btn-primary">Login</a>
                         </c:otherwise>
                     </c:choose>
                 </div>
@@ -336,7 +336,7 @@
         
         <!-- Filter Section -->
         <div class="filter-section">
-            <form action="MainController" method="get" class="filter-form">
+            <form action="${pageContext.request.contextPath}/MainController" method="get" class="filter-form">
                 <input type="hidden" name="action" value="product_filter">
                 
                 <div class="form-group">
@@ -436,7 +436,7 @@
                                     </c:if>
                                 </div>
                                 
-                                <a href="MainController?action=product_view&productId=${product.productId}" 
+                                <a href="${pageContext.request.contextPath}/MainController?action=product_view&productId=${product.productId}" 
                                    class="btn btn-primary" style="width: 100%; text-align: center;">
                                     View Details
                                 </a>

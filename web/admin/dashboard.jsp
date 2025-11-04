@@ -187,14 +187,14 @@
                 </div>
                 
                 <ul class="nav-menu">
-                    <li><a href="../home.jsp">Public Site</a></li>
-                    <li><a href="dashboard.jsp">Dashboard</a></li>
-                    <li><a href="../MainController?action=product_list">Products</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home.jsp">Public Site</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/dashboard.jsp">Dashboard</a></li>
+                    <li><a href="${pageContext.request.contextPath}/MainController?action=product_list">Products</a></li>
                 </ul>
                 
                 <div class="user-info">
                     <span>Welcome, ${sessionScope.fullName} (${sessionScope.roleName})</span>
-                    <a href="../MainController?action=auth_logout" class="btn btn-secondary">Logout</a>
+                    <a href="${pageContext.request.contextPath}/MainController?action=auth_logout" class="btn btn-secondary">Logout</a>
                 </div>
             </div>
         </div>
@@ -224,7 +224,7 @@
                 <div class="card-icon">📦</div>
                 <h3 class="card-title">Manage Products</h3>
                 <p class="card-description">Create, edit, and delete products in your catalog</p>
-                <a href="../MainController?action=product_list" class="btn btn-primary" style="width: 100%;">
+                <a href="${pageContext.request.contextPath}/MainController?action=product_list" class="btn btn-primary" style="width: 100%;">
                     Go to Products
                 </a>
             </div>
@@ -234,7 +234,7 @@
                 <div class="card-icon">📁</div>
                 <h3 class="card-title">Manage Categories</h3>
                 <p class="card-description">Organize your products with categories</p>
-                <a href="../MainController?action=category_list" class="btn btn-primary" style="width: 100%;">
+                <a href="${pageContext.request.contextPath}/MainController?action=category_list" class="btn btn-primary" style="width: 100%;">
                     Go to Categories
                 </a>
             </div>
@@ -244,7 +244,7 @@
                 <div class="card-icon">👥</div>
                 <h3 class="card-title">Manage Accounts</h3>
                 <p class="card-description">Control user access and permissions</p>
-                <a href="../MainController?action=account_list" class="btn btn-primary" style="width: 100%;">
+                <a href="${pageContext.request.contextPath}/MainController?action=account_list" class="btn btn-primary" style="width: 100%;">
                     Go to Accounts
                 </a>
             </div>
@@ -254,7 +254,7 @@
                 <div class="card-icon">➕</div>
                 <h3 class="card-title">Add New Product</h3>
                 <p class="card-description">Quickly add a new product to your catalog</p>
-                <a href="../MainController?action=product_showCreate" class="btn btn-primary" style="width: 100%;">
+                <a href="${pageContext.request.contextPath}/MainController?action=product_showCreate" class="btn btn-primary" style="width: 100%;">
                     Create Product
                 </a>
             </div>
@@ -264,7 +264,7 @@
                 <div class="card-icon">🆕</div>
                 <h3 class="card-title">Add New Category</h3>
                 <p class="card-description">Create a new product category</p>
-                <a href="../MainController?action=category_showCreate" class="btn btn-primary" style="width: 100%;">
+                <a href="${pageContext.request.contextPath}/MainController?action=category_showCreate" class="btn btn-primary" style="width: 100%;">
                     Create Category
                 </a>
             </div>
@@ -275,7 +275,7 @@
                     <div class="card-icon">👤</div>
                     <h3 class="card-title">Add New Account</h3>
                     <p class="card-description">Create a new user account</p>
-                    <a href="../MainController?action=account_showCreate" class="btn btn-primary" style="width: 100%;">
+                    <a href="${pageContext.request.contextPath}/MainController?action=account_showCreate" class="btn btn-primary" style="width: 100%;">
                         Create Account
                     </a>
                 </div>

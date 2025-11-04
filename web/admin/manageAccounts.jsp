@@ -219,15 +219,15 @@
                 </div>
                 
                 <ul class="nav-menu">
-                    <li><a href="dashboard.jsp">Dashboard</a></li>
-                    <li><a href="../MainController?action=product_list">Products</a></li>
-                    <li><a href="../MainController?action=category_list">Categories</a></li>
-                    <li><a href="../MainController?action=account_list">Accounts</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/dashboard.jsp">Dashboard</a></li>
+                    <li><a href="${pageContext.request.contextPath}/MainController?action=product_list">Products</a></li>
+                    <li><a href="${pageContext.request.contextPath}/MainController?action=category_list">Categories</a></li>
+                    <li><a href="${pageContext.request.contextPath}/MainController?action=account_list">Accounts</a></li>
                 </ul>
                 
                 <div class="user-info">
                     <span>${sessionScope.fullName}</span>
-                    <a href="../MainController?action=auth_logout" class="btn btn-secondary">Logout</a>
+                    <a href="${pageContext.request.contextPath}/MainController?action=auth_logout" class="btn btn-secondary">Logout</a>
                 </div>
             </div>
         </div>
@@ -239,7 +239,7 @@
             <div class="page-header-content">
                 <h2 class="page-title">Manage Accounts</h2>
                 <c:if test="${sessionScope.role == 1}">
-                    <a href="../MainController?action=account_showCreate" class="btn btn-primary">
+                    <a href="${pageContext.request.contextPath}/MainController?action=account_showCreate" class="btn btn-primary">
                         + Add New Account
                     </a>
                 </c:if>
@@ -306,24 +306,24 @@
                             </td>
                             <td>
                                 <div class="actions">
-                                    <a href="../MainController?action=account_showEdit&account=${acc.account}" 
+                                    <a href="${pageContext.request.contextPath}/MainController?action=account_showEdit&account=${acc.account}" 
                                        class="btn btn-warning btn-sm">Edit</a>
                                     
                                     <c:choose>
                                         <c:when test="${acc.use}">
-                                            <a href="../MainController?action=account_ban&account=${acc.account}" 
+                                            <a href="${pageContext.request.contextPath}/MainController?action=account_ban&account=${acc.account}" 
                                                class="btn btn-danger btn-sm"
                                                onclick="return confirm('Ban this account?')">Ban</a>
                                         </c:when>
                                         <c:otherwise>
-                                            <a href="../MainController?action=account_unban&account=${acc.account}" 
+                                            <a href="${pageContext.request.contextPath}/MainController?action=account_unban&account=${acc.account}" 
                                                class="btn btn-success btn-sm"
                                                onclick="return confirm('Unban this account?')">Unban</a>
                                         </c:otherwise>
                                     </c:choose>
                                     
                                     <c:if test="${sessionScope.role == 1 && acc.account != sessionScope.username}">
-                                        <a href="../MainController?action=account_delete&account=${acc.account}" 
+                                        <a href="${pageContext.request.contextPath}/MainController?action=account_delete&account=${acc.account}" 
                                            class="btn btn-danger btn-sm"
                                            onclick="return confirm('Permanently delete this account?')">Delete</a>
                                     </c:if>
