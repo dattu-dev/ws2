@@ -137,7 +137,7 @@
             <div class="alert alert-success">${SUCCESS}</div>
         </c:if>
         
-        <form action="MainController" method="post">
+        <form action="${pageContext.request.contextPath}/MainController" method="post">
             <input type="hidden" name="action" value="auth_login">
             
             <div class="form-group">
@@ -154,7 +154,7 @@
         </form>
         
         <div class="back-link">
-            <a href="home.jsp">← Back to Home</a>
+            <a href="${pageContext.request.contextPath}/home.jsp">← Back to Home</a>
         </div>
     </div>
 </body>

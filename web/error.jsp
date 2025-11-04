@@ -82,7 +82,7 @@
                 </c:otherwise>
             </c:choose>
         </p>
-        <a href="home.jsp" class="btn">Go to Home</a>
+        <a href="${pageContext.request.contextPath}/home.jsp" class="btn">Go to Home</a>
     </div>
 </body>
 </html>
