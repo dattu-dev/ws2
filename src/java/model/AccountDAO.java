@@ -1,6 +1,6 @@
 package model;
 
-import utils.DBUtils;
+import utils.DBContext;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class AccountDAO {
         ResultSet rs = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "SELECT * FROM accounts WHERE account = ? AND pass = ? AND isUse = 1";
             ps = conn.prepareStatement(sql);
             ps.setString(1, account);
@@ -43,7 +43,7 @@ public class AccountDAO {
         ResultSet rs = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "SELECT * FROM accounts ORDER BY roleInSystem DESC, account";
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -65,7 +65,7 @@ public class AccountDAO {
         ResultSet rs = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "SELECT * FROM accounts WHERE account = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, account);
@@ -87,7 +87,7 @@ public class AccountDAO {
         PreparedStatement ps = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "INSERT INTO accounts (account, pass, lastName, firstName, birthday, " +
                         "gender, phone, isUse, roleInSystem) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(sql);
@@ -115,7 +115,7 @@ public class AccountDAO {
         PreparedStatement ps = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "UPDATE accounts SET pass = ?, lastName = ?, firstName = ?, " +
                         "birthday = ?, gender = ?, phone = ?, isUse = ?, roleInSystem = ? " +
                         "WHERE account = ?";
@@ -144,7 +144,7 @@ public class AccountDAO {
         PreparedStatement ps = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "DELETE FROM accounts WHERE account = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, account);
@@ -163,7 +163,7 @@ public class AccountDAO {
         PreparedStatement ps = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "UPDATE accounts SET isUse = ? WHERE account = ?";
             ps = conn.prepareStatement(sql);
             ps.setBoolean(1, !ban); // isUse = true means active, false means banned

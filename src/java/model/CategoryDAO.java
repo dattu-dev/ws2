@@ -1,6 +1,6 @@
 package model;
 
-import utils.DBUtils;
+import utils.DBContext;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class CategoryDAO {
         ResultSet rs = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "SELECT * FROM categories ORDER BY categoryName";
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -36,7 +36,7 @@ public class CategoryDAO {
         ResultSet rs = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "SELECT * FROM categories WHERE typeId = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, typeId);
@@ -58,7 +58,7 @@ public class CategoryDAO {
         PreparedStatement ps = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "INSERT INTO categories (categoryName, memo) VALUES (?, ?)";
             ps = conn.prepareStatement(sql);
             ps.setString(1, category.getCategoryName());
@@ -78,7 +78,7 @@ public class CategoryDAO {
         PreparedStatement ps = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "UPDATE categories SET categoryName = ?, memo = ? WHERE typeId = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, category.getCategoryName());
@@ -99,7 +99,7 @@ public class CategoryDAO {
         PreparedStatement ps = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "DELETE FROM categories WHERE typeId = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, typeId);

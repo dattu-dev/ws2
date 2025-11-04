@@ -1,6 +1,6 @@
 package model;
 
-import utils.DBUtils;
+import utils.DBContext;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class ProductDAO {
         ResultSet rs = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "SELECT p.*, c.categoryName, a.firstName + ' ' + a.lastName as authorName " +
                         "FROM products p " +
                         "JOIN categories c ON p.typeId = c.typeId " +
@@ -41,7 +41,7 @@ public class ProductDAO {
         ResultSet rs = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "SELECT p.*, c.categoryName, a.firstName + ' ' + a.lastName as authorName " +
                         "FROM products p " +
                         "JOIN categories c ON p.typeId = c.typeId " +
@@ -70,7 +70,7 @@ public class ProductDAO {
         ResultSet rs = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "SELECT p.*, c.categoryName, a.firstName + ' ' + a.lastName as authorName " +
                         "FROM products p " +
                         "JOIN categories c ON p.typeId = c.typeId " +
@@ -100,7 +100,7 @@ public class ProductDAO {
         ResultSet rs = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             StringBuilder sql = new StringBuilder(
                 "SELECT p.*, c.categoryName, a.firstName + ' ' + a.lastName as authorName " +
                 "FROM products p " +
@@ -166,7 +166,7 @@ public class ProductDAO {
         ResultSet rs = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "SELECT p.*, c.categoryName, a.firstName + ' ' + a.lastName as authorName " +
                         "FROM products p " +
                         "JOIN categories c ON p.typeId = c.typeId " +
@@ -192,7 +192,7 @@ public class ProductDAO {
         PreparedStatement ps = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "INSERT INTO products (productId, productName, productImage, brief, " +
                         "typeId, account, unit, price, discount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(sql);
@@ -220,7 +220,7 @@ public class ProductDAO {
         PreparedStatement ps = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "UPDATE products SET productName = ?, productImage = ?, brief = ?, " +
                         "typeId = ?, unit = ?, price = ?, discount = ? WHERE productId = ?";
             ps = conn.prepareStatement(sql);
@@ -247,7 +247,7 @@ public class ProductDAO {
         PreparedStatement ps = null;
         
         try {
-            conn = DBUtils.makeConnection();
+            conn = DBContext.getConnection();
             String sql = "DELETE FROM products WHERE productId = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, productId);
