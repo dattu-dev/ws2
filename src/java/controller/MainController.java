@@ -10,10 +10,10 @@ import java.io.IOException;
 @WebServlet(name = "MainController", urlPatterns = {"/MainController"})
 public class MainController extends HttpServlet {
 
-    private static final String AUTH_CONTROLLER = "AuthController";
-    private static final String PRODUCT_CONTROLLER = "ProductController";
-    private static final String CATEGORY_CONTROLLER = "CategoryController";
-    private static final String ACCOUNT_CONTROLLER = "AccountController";
+    private static final String AUTH_CONTROLLER = "/AuthController";
+    private static final String PRODUCT_CONTROLLER = "/ProductController";
+    private static final String CATEGORY_CONTROLLER = "/CategoryController";
+    private static final String ACCOUNT_CONTROLLER = "/AccountController";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

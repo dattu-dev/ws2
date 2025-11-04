@@ -13,9 +13,9 @@ import java.io.IOException;
 @WebServlet(name = "AuthController", urlPatterns = {"/AuthController"})
 public class AuthController extends HttpServlet {
 
-    private static final String LOGIN_PAGE = "login.jsp";
-    private static final String HOME_PAGE = "home.jsp";
-    private static final String ADMIN_HOME = "admin/dashboard.jsp";
+    private static final String LOGIN_PAGE = "/login.jsp";
+    private static final String HOME_PAGE = "/home.jsp";
+    private static final String ADMIN_HOME = "/admin/dashboard.jsp";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

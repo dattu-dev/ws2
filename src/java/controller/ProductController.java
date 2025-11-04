@@ -67,7 +67,7 @@ public class ProductController extends HttpServlet {
         request.setAttribute("products", products);
         request.setAttribute("categories", categories);
         
-        return "products.jsp";
+        return "/products.jsp";
     }
     
     private String handleListByCategory(HttpServletRequest request) {
@@ -87,7 +87,7 @@ public class ProductController extends HttpServlet {
         }
         
         request.setAttribute("categories", categories);
-        return "products.jsp";
+        return "/products.jsp"; 
     }
     
     private String handleViewProduct(HttpServletRequest request) {
@@ -96,7 +96,7 @@ public class ProductController extends HttpServlet {
         if (productId != null && !productId.isEmpty()) {
             Product product = productDAO.getProductById(productId);
             request.setAttribute("product", product);
-            return "productDetail.jsp";
+            return "/productDetail.jsp";
         }
         
         request.setAttribute("ERROR", "Product not found!");
@@ -117,7 +117,7 @@ public class ProductController extends HttpServlet {
         }
         
         request.setAttribute("categories", categories);
-        return "products.jsp";
+        return "/products.jsp";
     }
     
     private String handleFilter(HttpServletRequest request) {
@@ -149,7 +149,7 @@ public class ProductController extends HttpServlet {
         request.setAttribute("selectedHasDiscount", hasDiscountStr);
         request.setAttribute("selectedSortBy", sortBy);
         
-        return "products.jsp";
+        return "/products.jsp";
     }
     
     private String handleShowCreate(HttpServletRequest request) {
